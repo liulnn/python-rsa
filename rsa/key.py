@@ -471,6 +471,8 @@ class PrivateKey(AbstractKey):
 
         from pyasn1.codec.der import decoder
         (priv, _) = decoder.decode(keyfile)
+        if len(priv) == 3:
+            (priv, _) = decoder.decode(priv[2])
 
         # ASN.1 contents of DER encoded private key:
         #
